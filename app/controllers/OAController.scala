@@ -57,7 +57,7 @@ class OAController @Inject()(cc: ControllerComponents, ws: WSClient, config: Con
   }
 
   def callback(code: Option[String]) = Action.async { implicit request: Request[AnyContent] =>
-    val uri = "https://test.salesforce.com/services/oauth2/token"
+    val uri = s"${sfURL}/services/oauth2/token"
 
     code.fold(Future {
       Unauthorized("Callback URL called without code.")
